@@ -39,6 +39,12 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile 'com.google.firebase:firebase-core:10.2.6'
+    compile files('src/libs/gson-2.8.1.jar')
+    compile files('src/libs/java-json-schema.jar')
+    compile files('src/libs/java-json.jar')
+
+    compile files('src/libs/okhttp-3.8.0.jar')
+    compile files('src/libs/okio-1.13.0.jar')
     compile 'com.google.firebase:firebase-messaging:10.2.6'
     compile 'com.google.android.gms:play-services:10.2.6'
 }
