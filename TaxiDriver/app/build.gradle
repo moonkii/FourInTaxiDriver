@@ -16,6 +16,7 @@ android {
                 cppFlags "-frtti -fexceptions"
             }
         }
+        multiDexEnabled true //important
     }
     buildTypes {
         release {
