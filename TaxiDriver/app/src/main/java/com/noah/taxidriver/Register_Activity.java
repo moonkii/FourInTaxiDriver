@@ -11,21 +11,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.gson.Gson;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 
-import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -36,7 +24,7 @@ import okhttp3.Response;
  * Created by YH on 2017-08-25.
  */
 
-public class register extends AppCompatActivity {
+public class Register_Activity extends AppCompatActivity {
 
     EditText email;
     EditText pw1;
@@ -69,10 +57,10 @@ button = (Button)findViewById(R.id.button2);
                 String name = name1.getText().toString();
                 String phone = phone1.getText().toString();
                 String car_num = car_num1.getText().toString();
-                Item_signup item_signup = new Item_signup(e,pw,token,phone,name,car_num);
+                Item_signup item_signup = new Item_signup(e,pw,token,phone,name,car_num,"1");
        String send=  intro.gson.toJson(item_signup);
                 trytologin(send);
-                Log.i("register","json = "+send);
+                Log.i("Register_Activity","json = "+send);
 
             }
         });
@@ -85,8 +73,8 @@ button = (Button)findViewById(R.id.button2);
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(register.this, "Please Wait", null, true, true); //서버접속하기 전에 로딩 띄우기
-            Log.i("register","백그라운드 시작");
+                loading = ProgressDialog.show(Register_Activity.this, "Please Wait", null, true, true); //서버접속하기 전에 로딩 띄우기
+            Log.i("Register_Activity","백그라운드 시작");
             }
 
             @Override
@@ -94,6 +82,13 @@ button = (Button)findViewById(R.id.button2);
                 super.onPostExecute(s);
                 Log.i("register_response",s);
                 loading.dismiss();
+               item_response result =  intro.gson.fromJson(s,item_response.class);
+                if(result.getResponse().equals("1")){
+                    Toast.makeText(Register_Activity.this, "환영합니다.", Toast.LENGTH_SHORT).show();
+                    finish();
+                }else{
+                    Toast.makeText(Register_Activity.this, "서버와의 연결이 좋지 않습니다..", Toast.LENGTH_SHORT).show();
+                }
 
             }
 

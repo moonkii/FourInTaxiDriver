@@ -12,16 +12,25 @@ public class Item_signup {
     private String phone;
     private String name;
     private String car_num;
-    private String mode = "1";
+    private String mode ;
     private String flag = "signup";
 
-    public Item_signup(String id, String pw, String token, String phone, String name,String car_num) {
+    public Item_signup(String id, String pw, String token, String phone, String name,String car_num,String mode) {
         this.id = id;
         this.pw = pw;
         this.token = token;
         this.phone = phone;
         this.name = name;
         this.car_num = car_num;
+        this.mode = mode;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
     }
 
     public Item_signup() {
@@ -30,6 +39,7 @@ public class Item_signup {
 
     public String getId() {
         return id;
+
     }
 
     public void setId(String id) {

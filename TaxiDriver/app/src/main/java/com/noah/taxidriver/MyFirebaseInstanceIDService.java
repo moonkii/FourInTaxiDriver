@@ -42,7 +42,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
         //request
         Request request = new Request.Builder()
-                .url("http://서버주소/fcm/register.php")
+                .url("http://서버주소/fcm/Register_Activity.php")
                 .post(body)
                 .build();
 

@@ -12,14 +12,14 @@ public class intro extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_intro);
 gson = new Gson();
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        startActivity(new Intent(this,register.class));
+        startActivity(new Intent(this,Register_Activity.class));
 finish();
     }
 
