@@ -3,6 +3,7 @@ package com.noah.taxidriver;
 import android.*;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -54,8 +55,8 @@ public class Register_Activity extends AppCompatActivity {
         phone1 = (EditText) findViewById(R.id.editText5);
         car_num1 = (EditText) findViewById(R.id.editText6);
         button = (Button) findViewById(R.id.button2);
-        settingGPS();
-        userLocation = getMyLocation();
+//        settingGPS();
+//        userLocation = getMyLocation();
 //추가한 라인
         Log.i("login", "시작");
         //결국 한 기기에선 똑같은 토큰이 나오게 되있음.
@@ -70,11 +71,11 @@ public class Register_Activity extends AppCompatActivity {
                 String name = name1.getText().toString();
                 String phone = phone1.getText().toString();
                 String car_num = car_num1.getText().toString();
-
-                double latitude = userLocation.getLatitude();
-                double longitude = userLocation.getLongitude();
-                Log.i("레지스터","위도 : "+latitude);
-                Log.i("레지스터","경도 : "+longitude);
+//                Log.i("아좀",userLocation.toString());
+//                double latitude = userLocation.getLatitude();
+//                double longitude = userLocation.getLongitude();
+//                Log.i("레지스터","위도 : "+latitude);
+//                Log.i("레지스터","경도 : "+longitude);
                 Item_signup item_signup = new Item_signup(e, pw, token, phone, name, car_num, "1");
                 String send = intro.gson.toJson(item_signup);
                 trytologin(send);
@@ -105,6 +106,7 @@ public class Register_Activity extends AppCompatActivity {
                 item_response result = intro.gson.fromJson(s, item_response.class);
                 if (result.getResponse().equals("1")) {
                     Toast.makeText(Register_Activity.this, "환영합니다.", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Register_Activity.this,Main_Activity.class));
                     finish();
                 } else {
                     Toast.makeText(Register_Activity.this, "서버와의 연결이 좋지 않습니다..", Toast.LENGTH_SHORT).show();
@@ -153,29 +155,23 @@ public class Register_Activity extends AppCompatActivity {
         Location currentLocation = null;
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+
             ActivityCompat.requestPermissions(Register_Activity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1000 );
 
         }else{
-            Log.i("뭐지 : ","썅");
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
             //gps를 provider 사용하는것이 디테일한 위치정보가 나온다.
 
             // 수동으로 위치 구하기
             String locationProvider = LocationManager.GPS_PROVIDER;
+      locationProvider = LocationManager.NETWORK_PROVIDER;
+
             Log.i("뭐지 : ",locationProvider);
             currentLocation = locationManager.getLastKnownLocation(locationProvider);
             //여기서 현재 위치를 가져오지를 못함.
 //        }
             Log.i("check_location","currentLocation : "+currentLocation);
-
-
 
         }
         return currentLocation;
