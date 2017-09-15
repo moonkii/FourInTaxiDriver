@@ -16,11 +16,12 @@ import com.google.firebase.messaging.RemoteMessage;
 
 public class MyFirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
     private static final String TAG = "FirebaseMsgService";
-
+    public static final String INTENT_FILTER = "INTENT_FILTER";
     // [START receive_message]
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-
+        Intent intent = new Intent(INTENT_FILTER);
+        sendBroadcast(intent);
         //추가한것
         sendNotification(remoteMessage.getData().get("message"));
     }
