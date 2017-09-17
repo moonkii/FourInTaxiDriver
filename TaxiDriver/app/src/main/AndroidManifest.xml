@@ -23,7 +23,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".intro">
+        <activity android:name=".Activity.intro">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,8 +31,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".login"/>
-        <activity android:name=".Register_Activity"/>
-        <activity android:name=".Main_Activity"/>
+        <activity android:name=".Activity.Register_Activity"/>
+        <activity android:name=".Activity.Main_Activity"/>
+        <activity android:name=".Activity.Record_Activity"/>
 
         <service
             android:name=".MyFirebaseMessagingService">

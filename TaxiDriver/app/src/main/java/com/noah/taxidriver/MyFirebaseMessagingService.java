@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 
 import com.google.firebase.messaging.RemoteMessage;
+import com.noah.taxidriver.Activity.intro;
 
 
 public class MyFirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
