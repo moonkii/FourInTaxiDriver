@@ -52,7 +52,7 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
             }
         });
 
-        registerReceiver(myReceiver, new IntentFilter(MyFirebaseMessagingService.INTENT_FILTER));
+        registerReceiver(myReceiver, new IntentFilter(MyFirebaseMessagingService.CALL_DRIVER));
     }
 
     private BroadcastReceiver myReceiver = new BroadcastReceiver() {
