@@ -18,13 +18,14 @@ public class Main_Activity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        registerReceiver(myReceiver, new IntentFilter(MyFirebaseMessagingService.INTENT_FILTER));
+        registerReceiver(myReceiver, new IntentFilter(MyFirebaseMessagingService.CALL_DRIVER));
     }
 
     private BroadcastReceiver myReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Toast.makeText(context, "왓어", Toast.LENGTH_SHORT).show();
+            Call_driver_dialog a = new Call_driver_dialog(getApplicationContext(),"출발지","목적지");
+            a.show();
         }
     };
 

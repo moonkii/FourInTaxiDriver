@@ -16,12 +16,17 @@ import com.google.firebase.messaging.RemoteMessage;
 
 public class MyFirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
     private static final String TAG = "FirebaseMsgService";
-    public static final String INTENT_FILTER = "INTENT_FILTER";
+    public static final String CALL_DRIVER = "CALL_DRIVER";
     // [START receive_message]
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        Intent intent = new Intent(INTENT_FILTER);
-        sendBroadcast(intent);
+        //고객의 콜요청이 왓을경우.
+        if(remoteMessage.getData().get("message").equals("call_driver")) {
+            Intent intent = new Intent(CALL_DRIVER);
+            sendBroadcast(intent);
+        }else{
+
+        }
         //추가한것
         sendNotification(remoteMessage.getData().get("message"));
     }

@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,10 +13,14 @@ import android.widget.TextView;
  * Created by YH on 2017-09-16.
  */
 
-public class Call_driver extends Dialog {
-    public Call_driver(@NonNull Context context) {
+public class Call_driver_dialog extends Dialog {
+    public Call_driver_dialog(@NonNull Context context,String start,String end) {
         super(context);
+        this.start_ = start;
+        this.end_ = end;
     }
+    String start_;
+    String end_;
 TextView start;
     TextView end;
     Button ok;//5
@@ -28,5 +33,22 @@ TextView start;
     start = (TextView)findViewById(R.id.textView);
         ok = (Button)findViewById(R.id.button5);
         no = (Button)findViewById(R.id.button6);
+start.setText(start_);
+        end.setText(end_);
+
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //매칭 됬다고 보내준다.
+
+            }
+        });
+
+    no.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            dismiss();
+        }
+    });
     }
 }
