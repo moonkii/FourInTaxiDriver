@@ -22,6 +22,7 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         //고객의 콜요청이 왓을경우.
+
         if(remoteMessage.getData().get("message").equals("call_driver")) {
             Intent intent = new Intent(CALL_DRIVER);
             sendBroadcast(intent);
