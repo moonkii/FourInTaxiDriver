@@ -1,6 +1,5 @@
-package com.noah.taxidriver;
+package com.noah.taxidriver.Activity;
 
-import android.*;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -14,13 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.noah.taxidriver.R;
 
 public class intro extends AppCompatActivity {
 
 
     //퍼미션 변수
     final int permissionRequestCodeForMap = 1000;
-    static Gson gson;
+    Gson gson;
 
 
     @Override

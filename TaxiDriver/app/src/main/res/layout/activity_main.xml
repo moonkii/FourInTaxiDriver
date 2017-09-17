@@ -1,19 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="3">
+
+    <RelativeLayout
+        android:layout_weight="0.5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+     <Button
+         android:id="@+id/main_myinfo"
+         android:layout_alignParentStart="true"
+         android:text="내정보"
+         android:layout_width="wrap_content"
+         android:layout_height="match_parent" />
+
+      <Button
+          android:id="@+id/main_guestlist"
+          android:text="손님 리스트"
+          android:layout_centerInParent="true"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent" />
+
+    <Button
+        android:id="@+id/main_out"
+        android:layout_alignParentEnd="true"
+        android:text="퇴근"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/status"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:background="@android:color/black"
+        android:gravity="center"
         android:text="상태"
         android:textSize="50sp" />
 
-    <Button
-        android:id="@+id/button3"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="퇴근" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="2">
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/main_btn_empty"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="빈차" />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/main_btn_driving"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="운행중" />
+
+    </LinearLayout>
+
 </LinearLayout>
