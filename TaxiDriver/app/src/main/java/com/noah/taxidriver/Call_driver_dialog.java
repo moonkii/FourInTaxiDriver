@@ -2,12 +2,15 @@ package com.noah.taxidriver;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.noah.taxidriver.Activity.Act_loding_matching;
 
 /**
  * Created by YH on 2017-09-16.
@@ -16,12 +19,14 @@ import android.widget.TextView;
 public class Call_driver_dialog extends Dialog {
     public Call_driver_dialog(@NonNull Context context,String start,String end,String x,String y,String get_token) {
         super(context);
+        this.context = context;
         this.start_ = start;
         this.end_ = end;
         this.x = x;
         this.y = y;
         this.get_token = get_token;
     }
+    Context context;
     String start_;
     String end_;
     String x;
@@ -57,6 +62,9 @@ start.setText(start_);
             public void onClick(View v) {
                 // 토큰값을 사용하여 매칭됨을 드라이버에게 전송함.
                // get_token;
+                //고객의 응답을 기다리는 화면으로 넘어간다.
+                context.startActivity(new Intent(context, Act_loding_matching.class));
+                dismiss();
             }
         });
 
