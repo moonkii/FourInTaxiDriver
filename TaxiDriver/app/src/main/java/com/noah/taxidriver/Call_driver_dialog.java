@@ -14,13 +14,19 @@ import android.widget.TextView;
  */
 
 public class Call_driver_dialog extends Dialog {
-    public Call_driver_dialog(@NonNull Context context,String start,String end) {
+    public Call_driver_dialog(@NonNull Context context,String start,String end,String x,String y,String get_token) {
         super(context);
         this.start_ = start;
         this.end_ = end;
+        this.x = x;
+        this.y = y;
+        this.get_token = get_token;
     }
     String start_;
     String end_;
+    String x;
+    String y;
+    String get_token;
 TextView start;
     TextView end;
     Button ok;//5
@@ -36,11 +42,21 @@ TextView start;
 start.setText(start_);
         end.setText(end_);
 
+        start.setText(start_);
+        end.setText(end_);
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //매칭 됬다고 보내준다.
 
+            }
+        });
+
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 토큰값을 사용하여 매칭됨을 드라이버에게 전송함.
+               // get_token;
             }
         });
 
