@@ -25,6 +25,8 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
 
         if(remoteMessage.getData().get("message").equals("call_driver")) {
             Intent intent = new Intent(CALL_DRIVER);
+            intent.putExtra("msg",remoteMessage.getData().get("message"));
+
             sendBroadcast(intent);
         }else{
 
