@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -29,7 +28,7 @@ public class Main_Activity extends AppCompatActivity{
         public void onReceive(Context context, Intent intent) {
            String get_msg =  intent.getStringExtra("msg");
             Gson gson = new Gson();
-           item_call_driver item =  gson.fromJson(get_msg,item_call_driver.class);
+           item_matching item =  gson.fromJson(get_msg,item_matching.class);
             if(item.getFlag().trim().equals("call_driver")) { //운전자가 고객을 불렀을 경우. flag에 call_driver를 사용한다.
                 String x = item.getX(); //위도
                 String y = item.getY();// 경도

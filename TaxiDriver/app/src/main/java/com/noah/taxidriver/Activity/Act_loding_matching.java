@@ -7,15 +7,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 import com.google.gson.Gson;
-import com.noah.taxidriver.Call_driver_dialog;
 import com.noah.taxidriver.MyFirebaseMessagingService;
 import com.noah.taxidriver.R;
-import com.noah.taxidriver.item_call_driver;
+import com.noah.taxidriver.item_matching;
 
 /**
  * Created by YH on 2017-09-18.
@@ -35,7 +31,7 @@ public class Act_loding_matching extends Activity{
         public void onReceive(Context context, Intent intent) {
             String get_msg =  intent.getStringExtra("msg");
             Gson gson = new Gson();
-            item_call_driver item =  gson.fromJson(get_msg,item_call_driver.class);
+            item_matching item =  gson.fromJson(get_msg,item_matching.class);
             if(item.getFlag().trim().equals("")) { //고객의 응답일 경우의 flag로 바꿔준다.
                 String x = item.getX(); //위도
                 String y = item.getY();// 경도
