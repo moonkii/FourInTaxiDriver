@@ -32,7 +32,7 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
 
         }
         //추가한것
-        sendNotification(remoteMessage.getData().get("message"));
+//        sendNotification(remoteMessage.getData().get("message"));
     }
 
     private void sendNotification(String messageBody) {

@@ -110,7 +110,7 @@ public class Register_Activity extends AppCompatActivity {
                 Log.i("register_response", s);
                 loading.dismiss();
                 item_response result = gson.fromJson(s, item_response.class);
-                if (result.getResponse().equals("1")) {
+                if (result.getResponse_code().equals("1")) {
                     Toast.makeText(Register_Activity.this, "환영합니다.", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(Register_Activity.this,Main_Activity.class));
                     finish();

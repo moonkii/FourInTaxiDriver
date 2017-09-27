@@ -16,4 +16,20 @@ public class item_response {
         this.data = data;
 
     }
+
+    public String getResponse_code() {
+        return response_code;
+    }
+
+    public void setResponse_code(String response_code) {
+        this.response_code = response_code;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
 }
