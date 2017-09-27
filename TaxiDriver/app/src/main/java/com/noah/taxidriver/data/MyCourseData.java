@@ -1,5 +1,7 @@
 package com.noah.taxidriver.data;
 
+import java.util.Date;
+
 import io.realm.RealmObject;
 
 /**
@@ -10,11 +12,12 @@ public class MyCourseData extends RealmObject {
 
     int seq;
     String name;
-    String local;
-    String adress;
+    String start_address;
+    String destination;
     double lat;
     double lng;
-    String lang;
+    Date datetime;
+    String token;
 
     public int getSeq() {
         return seq;
@@ -32,20 +35,20 @@ public class MyCourseData extends RealmObject {
         this.name = name;
     }
 
-    public String getLocal() {
-        return local;
+    public String getStart_address() {
+        return start_address;
     }
 
-    public void setLocal(String local) {
-        this.local = local;
+    public void setStart_address(String start_address) {
+        this.start_address = start_address;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getDestination() {
+        return destination;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
     public double getLat() {
@@ -64,11 +67,19 @@ public class MyCourseData extends RealmObject {
         this.lng = lng;
     }
 
-    public String getLang() {
-        return lang;
+    public Date getDatetime() {
+        return datetime;
     }
 
-    public void setLang(String lang) {
-        this.lang = lang;
+    public void setDatetime(Date datetime) {
+        this.datetime = datetime;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

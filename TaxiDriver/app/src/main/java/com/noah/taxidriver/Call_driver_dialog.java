@@ -29,9 +29,15 @@ import android.widget.Toast;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
 import com.noah.taxidriver.Activity.*;
+import com.noah.taxidriver.data.MyCourseData;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import io.realm.Realm;
+import io.realm.RealmObject;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -40,7 +46,7 @@ import static android.content.Context.MODE_PRIVATE;
  */
 
 public class Call_driver_dialog extends Dialog {
-    public Call_driver_dialog(@NonNull Context context, String start, String end, String x, String y, String get_token, Main_Activity main_activity) {
+    public Call_driver_dialog(@NonNull Context context, String start, String end, String x, String y, String get_token, Main_Activity main_activity,String name) {
         super(context);
         this.context = context;
         this.start_ = start;
@@ -50,6 +56,7 @@ public class Call_driver_dialog extends Dialog {
         //받은 토큰
         this.get_token = get_token;
         this.main_activity = main_activity;
+        this.name = name;
     }
     Main_Activity main_activity;
     Location userLocation;
@@ -62,6 +69,7 @@ public class Call_driver_dialog extends Dialog {
     double longitude;
     Context context;
     String start_;
+    String name;
     String end_;
     String x;
     String y;
@@ -75,10 +83,12 @@ TextView start;
     TextView end;
     Button ok;//5
     Button no;//6
-
+Realm realm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Realm.init(getContext());
+        realm = Realm.getDefaultInstance();
         setContentView(R.layout.dialog_call_request);
     end = (TextView)findViewById(R.id.textView2);
     start = (TextView)findViewById(R.id.textView);
@@ -162,6 +172,23 @@ start.setText(start_);
                     Intent intent = new Intent(getContext(), Main_Activity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     getContext().startActivity(intent);
+
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+
+                            Number seq = realm.where(MyCourseData.class).max("seq");
+                            int nextId = (seq == null) ? 1 : seq.intValue() + 1;
+                            MyCourseData myCourseData = realm.createObject(MyCourseData.class,nextId);
+                            myCourseData.setDatetime(new Date());
+                            myCourseData.setToken(get_token);
+                            myCourseData.setName(name);
+                            myCourseData.setStart_address(start_);
+                            myCourseData.setDestination(end_);
+                            myCourseData.setLat(Double.parseDouble(x));
+                            myCourseData.setLng(Double.parseDouble(y));
+                        }
+                    });
                     dismiss();
 
 
