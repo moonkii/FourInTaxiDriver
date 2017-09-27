@@ -4,7 +4,7 @@ package com.noah.taxidriver;
  * Created by YH on 2017-09-18.
  */
 
-public class item_matching {
+public class Item_response_driver {
     String token;
     String x;
     String y;
@@ -12,7 +12,9 @@ public class item_matching {
     String start_address; //탑승자의 현위치
     String flag;
     String name;
-    public item_matching(String name,String token, String x, String y, String destination, String start_address, String flag) {
+    String car_num; // 차량넘버
+    public Item_response_driver(String car_num, String name, String token, String x, String y, String destination, String start_address, String flag) {
+        this.car_num = car_num;
         this.name = name;
         this.token = token;
         this.x = x;
@@ -20,6 +22,14 @@ public class item_matching {
         this.destination = destination;
         this.start_address = start_address;
         this.flag = flag;
+    }
+
+    public String getCar_num() {
+        return car_num;
+    }
+
+    public void setCar_num(String car_num) {
+        this.car_num = car_num;
     }
 
     public String getName() {
