@@ -32,6 +32,7 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
 
     Button btn_empty;
     Button btn_driving;
+    Button client_list;
     TextView status;
 
     Button btn_record;
@@ -46,6 +47,13 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
         btn_driving = (Button) findViewById(R.id.main_btn_driving);
         status = (TextView) findViewById(R.id.status);
         btn_record = (Button) findViewById(R.id.main_myinfo);
+        client_list = (Button)findViewById(R.id.main_guestlist);
+        client_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Main_Activity.this,Record_Activity.class));
+            }
+        });
 
         btn_empty.setOnClickListener(new View.OnClickListener() {
             @Override
