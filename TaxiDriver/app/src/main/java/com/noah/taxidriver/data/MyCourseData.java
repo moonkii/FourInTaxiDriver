@@ -3,13 +3,14 @@ package com.noah.taxidriver.data;
 import java.util.Date;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by YH on 2017-09-27.
  */
 
 public class MyCourseData extends RealmObject {
-
+@PrimaryKey
     int seq;
     String name;
     String start_address;

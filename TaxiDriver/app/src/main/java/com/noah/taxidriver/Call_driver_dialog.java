@@ -46,7 +46,7 @@ import static android.content.Context.MODE_PRIVATE;
  */
 
 public class Call_driver_dialog extends Dialog {
-    public Call_driver_dialog(@NonNull Context context, String start, String end, String x, String y, String get_token, Main_Activity main_activity,String name) {
+    public Call_driver_dialog(@NonNull Context context, String start, String end, String x, String y, String get_token, Main_Activity main_activity,String name,String lang) {
         super(context);
         this.context = context;
         this.start_ = start;
@@ -57,7 +57,10 @@ public class Call_driver_dialog extends Dialog {
         this.get_token = get_token;
         this.main_activity = main_activity;
         this.name = name;
+        this.lang= lang;
     }
+
+    String lang;
     Main_Activity main_activity;
     Location userLocation;
     //현재 위치 구하기 위한 변수와 객체선언.
@@ -112,6 +115,8 @@ start.setText(start_);
 
                 Gson gson = new Gson();
               String send=  gson.toJson(new Item_response_driver("car_num","name",get_token,x,y,end_,start_,"driver_ok"));
+                Log.i("클라에게 보내는 메시지",send);
+                Log.i("클라에게 보내는 메시지","");
                 send_message_handler handler = new send_message_handler();//통신 응답 후 처리할 부분을 핸들러에 정의한다.
                 Network.push(send,getContext(),handler);
             }
@@ -185,6 +190,8 @@ start.setText(start_);
                             myCourseData.setName(name);
                             myCourseData.setStart_address(start_);
                             myCourseData.setDestination(end_);
+                            Log.i("썅 x",x);
+                            Log.i("썅 y",y);
                             myCourseData.setLat(Double.parseDouble(x));
                             myCourseData.setLng(Double.parseDouble(y));
                         }

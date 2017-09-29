@@ -12,13 +12,42 @@ public class item_matching {
     String start_address; //탑승자의 현위치
     String flag;
     String name;
-    public item_matching(String name,String token, String x, String y, String destination, String start_address, String flag) {
+    String lang;
+
+    public item_matching(String token, String x, String y, String destination, String start_address, String flag, String name, String lang) {
+        this.token = token;
+        this.x = x;
+        this.y = y;
+        this.destination = destination;
+        this.start_address = start_address;
+        this.flag = flag;
+        this.name = name;
+        this.lang = lang;
+    }
+
+    public String getLang() {
+        return lang;
+    }
+
+    public void setLang(String lang) {
+        this.lang = lang;
+    }
+
+    public item_matching(String name, String token, String x, String y, String destination, String start_address, String flag) {
         this.name = name;
         this.token = token;
         this.x = x;
         this.y = y;
         this.destination = destination;
         this.start_address = start_address;
+        this.flag = flag;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
         this.flag = flag;
     }
 

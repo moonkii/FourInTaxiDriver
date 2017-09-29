@@ -28,7 +28,7 @@ public class Record_Activity extends Activity {
     /* 승객 탑승기록 액티비티 */
 
     ListView recordListView;
-    RecordAdapter adapter;
+//    RecordAdapter adapter;
     ArrayList<Record_item> dataArray;
 
 
@@ -45,8 +45,8 @@ public class Record_Activity extends Activity {
 
 
         recordListView = (ListView) findViewById(R.id.record_list);
-        adapter = new RecordAdapter(this,R.layout.activity_record_item,dataArray);
-        recordListView.setAdapter(adapter);
+//        adapter = new RecordAdapter(this,R.layout.activity_record_item,dataArray);
+//        recordListView.setAdapter(adapter);
 
     }
 }
@@ -111,61 +111,61 @@ class Record_item{
 
 
 
-
-class RecordAdapter extends ArrayAdapter<Record_item> {
-
-
-    ArrayList<Record_item> arraylist;
-    Context c;
-
-
-    public RecordAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull ArrayList<Record_item> objects) {
-        super(context, resource, objects);
-        this.c = context;
-        this.arraylist = objects;
-    }
-
-    @Override
-    public int getCount() {
-        return arraylist.size();
-    }
-
-    @NonNull
-    @Override
-    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-        if (convertView == null) {
-            //인플레이터 생성
-            LayoutInflater inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            //인플레이터로 리스트뷰를 실제 객체로 만들어줌.
-            convertView = inflater.inflate(R.layout.activity_record_item, parent, false);
-        }
-
-        TextView date = (TextView) convertView.findViewById(R.id.record_item_date);
-        TextView start = (TextView) convertView.findViewById(R.id.record_item_start);
-        TextView end = (TextView) convertView.findViewById(R.id.record_item_end);
-        TextView pName = (TextView) convertView.findViewById(R.id.record_pname);
-        ImageView call = (ImageView) convertView.findViewById(R.id.record_call);
-
-
-        date.setText(arraylist.get(position).getDate());
-        start.setText(arraylist.get(position).getStart());
-        end.setText(arraylist.get(position).getEnd());
-        pName.setText(arraylist.get(position).getName());
-
-
-        call.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(c, position + "번째전화", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-        return convertView;
-    }
-
-}
+//
+//class RecordAdapter extends ArrayAdapter<Record_item> {
+//
+//
+//    ArrayList<Record_item> arraylist;
+//    Context c;
+//
+//
+//    public RecordAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull ArrayList<Record_item> objects) {
+//        super(context, resource, objects);
+//        this.c = context;
+//        this.arraylist = objects;
+//    }
+//
+//    @Override
+//    public int getCount() {
+//        return arraylist.size();
+//    }
+//
+//    @NonNull
+//    @Override
+//    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+//
+//        if (convertView == null) {
+//            //인플레이터 생성
+//            LayoutInflater inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//
+//            //인플레이터로 리스트뷰를 실제 객체로 만들어줌.
+//            convertView = inflater.inflate(R.layout.activity_record_item, parent, false);
+//        }
+//
+//        TextView date = (TextView) convertView.findViewById(R.id.record_item_date);
+//        TextView start = (TextView) convertView.findViewById(R.id.record_item_start);
+//        TextView end = (TextView) convertView.findViewById(R.id.record_item_end);
+//        TextView pName = (TextView) convertView.findViewById(R.id.record_pname);
+//        ImageView call = (ImageView) convertView.findViewById(R.id.record_call);
+//
+//
+//        date.setText(arraylist.get(position).getDate());
+//        start.setText(arraylist.get(position).getStart());
+//        end.setText(arraylist.get(position).getEnd());
+//        pName.setText(arraylist.get(position).getName());
+//
+//
+//        call.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(c, position + "번째전화", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//
+//        return convertView;
+//    }
+//
+//}
 
 

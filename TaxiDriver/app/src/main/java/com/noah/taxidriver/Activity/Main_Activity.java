@@ -62,10 +62,10 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
 
 
 
-                //테스트를 위한코드
-//                Log.i("클릭","클릭");
-                Call_driver_dialog a = new Call_driver_dialog(Main_Activity.this,"x","x","x","x",null,Main_Activity.this,"name");
-                a.show();
+//                //테스트를 위한코드
+////                Log.i("클릭","클릭");
+//                Call_driver_dialog a = new Call_driver_dialog(Main_Activity.this,"x","x","x","x",null,Main_Activity.this,"name",null);
+//                a.show();
             }
         });
 
@@ -107,7 +107,9 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
                 item_matching item_response = gson.fromJson(get_json, item_matching.class);
 
               Call_driver_dialog dialog = new Call_driver_dialog(Main_Activity.this,item_response.getStart_address(),item_response.getDestination(),item_response.getX(),
-                      item_response.getY(), item_response.getToken(),Main_Activity.this,item_response.getName());
+                      item_response.getY(), item_response.getToken(),Main_Activity.this,item_response.getName(),item_response.getLang());
+                Log.i("쌰얐ㅇ바","ㄴㅇㄹ");
+                Log.i("쌰얐ㅇ바","ㄴㅇㄹ"+item_response.getToken());
                 dialog.show();
 
             }

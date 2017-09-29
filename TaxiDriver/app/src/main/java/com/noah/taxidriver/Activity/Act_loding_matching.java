@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.noah.taxidriver.MyFirebaseMessagingService;
@@ -41,6 +42,7 @@ public class Act_loding_matching extends Activity{
 
                 //매칭 완료로 넘어가 줄 수 있도록 한다.
                 //경로 화면으로 넘어간다.
+
 
             }
         }

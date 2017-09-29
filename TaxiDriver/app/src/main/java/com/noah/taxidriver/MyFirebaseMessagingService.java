@@ -10,9 +10,13 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import com.google.firebase.messaging.RemoteMessage;
 import com.noah.taxidriver.Activity.intro;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class MyFirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
@@ -22,15 +26,23 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         //고객의 콜요청이 왓을경우.
+        Log.i("왜그래 ?","하");
+            Log.i("ㅋㅋ",remoteMessage.getData().get("message"));
+        try {
+            JSONObject jsonObject = new JSONObject(remoteMessage.getData().get("message"));
+            if(jsonObject.get("flag").equals("call_driver")) {
+                Log.i("썅","왜");
+                Intent intent = new Intent(CALL_DRIVER);
+                intent.putExtra("msg",remoteMessage.getData().get("message"));
 
-        if(remoteMessage.getData().get("message").equals("call_driver")) {
-            Intent intent = new Intent(CALL_DRIVER);
-            intent.putExtra("msg",remoteMessage.getData().get("message"));
+                sendBroadcast(intent);
+            }else{
 
-            sendBroadcast(intent);
-        }else{
-
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+
         //추가한것
 //        sendNotification(remoteMessage.getData().get("message"));
     }
