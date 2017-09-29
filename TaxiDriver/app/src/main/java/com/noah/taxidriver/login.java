@@ -4,9 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.messaging.FirebaseMessaging;
-
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -29,8 +26,6 @@ public class login extends AppCompatActivity {
         String token2 = FirebaseInstanceId.getInstance().getToken();
         Log.i("to",token);
         Log.i("dd",token2);
-
-
 
 
         //로그인 완료 될 경우에 토큰 값을 받아 올 수 있도록 한다.
