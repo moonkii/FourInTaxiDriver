@@ -97,9 +97,11 @@ public class Matched_driver extends AppCompatActivity implements OnMapReadyCallb
             @Override
             public void onClick(View v) {
                 item_matching item_matching = new item_matching("get_client",token);
+
                 Gson gson = new Gson();
                 String send = gson.toJson(item_matching);
-                Network.push(send,getApplicationContext(),handler);
+                Log.i("뱐ㅇ러ㅏ",send);
+                Network.push(send,Matched_driver.this,handler);
             }
         });
 
