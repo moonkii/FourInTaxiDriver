@@ -16,17 +16,17 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.Design.Light">
         <activity android:name=".Activity.intro">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -34,7 +34,14 @@
         <activity android:name=".Activity.Register_Activity"/>
         <activity android:name=".Activity.Main_Activity"/>
         <activity android:name=".Activity.Record_Activity"/>
-    <activity android:name=".Activity.Act_loding_matching"/>
+    <activity android:name=".Activity.Act_loading_matching"/>
+
+
+        <!-- 구글 맵 메타 데이터 -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBY6z21uovEGtPpyWA4J2A-iThFZYNtP-M" />
+
         <service
             android:name=".MyFirebaseMessagingService">
             <intent-filter>

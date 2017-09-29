@@ -13,14 +13,13 @@ import com.noah.taxidriver.R;
  */
 
 public class Matched_driver extends AppCompatActivity {
-    Button go,cancle;
+    Button go;
     EditText where,destination;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.matched_driver);
         go = (Button)findViewById(R.id.go);
-        cancle = (Button)findViewById(R.id.cancle);
         where = (EditText)findViewById(R.id.where);
         destination = (EditText)findViewById(R.id.destination);
 

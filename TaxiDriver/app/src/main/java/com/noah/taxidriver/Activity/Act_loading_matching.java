@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.noah.taxidriver.MyFirebaseMessagingService;
@@ -18,7 +17,7 @@ import com.noah.taxidriver.item_matching;
  * Created by YH on 2017-09-18.
  */
 
-public class Act_loding_matching extends Activity{
+public class Act_loading_matching extends Activity{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

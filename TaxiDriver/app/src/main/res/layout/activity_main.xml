@@ -52,7 +52,9 @@
         android:weightSum="2">
 
         <Button
+            android:background="#f7be16"
             android:layout_weight="1"
+            android:textColor="#2d2d2d"
             android:id="@+id/main_btn_empty"
             android:layout_width="0dp"
             android:layout_height="match_parent"
