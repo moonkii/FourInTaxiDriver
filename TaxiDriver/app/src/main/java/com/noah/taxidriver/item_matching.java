@@ -25,6 +25,11 @@ public class item_matching {
         this.lang = lang;
     }
 
+    public item_matching(String flag,String token) {
+        this.token = token;
+        this.flag = flag;
+    }
+
     public String getLang() {
         return lang;
     }

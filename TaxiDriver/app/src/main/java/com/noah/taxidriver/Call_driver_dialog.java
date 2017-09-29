@@ -114,7 +114,7 @@ start.setText(start_);
                 //1.매칭 됬다고 보내준다
 
                 Gson gson = new Gson();
-              String send=  gson.toJson(new Item_response_driver("car_num","name",get_token,x,y,end_,start_,"driver_ok"));
+              String send=  gson.toJson(new Item_response_driver("강원 77바 1234","name",get_token,x,y,end_,start_,"driver_ok"));
                 Log.i("클라에게 보내는 메시지",send);
                 Log.i("클라에게 보내는 메시지","");
                 send_message_handler handler = new send_message_handler();//통신 응답 후 처리할 부분을 핸들러에 정의한다.
@@ -196,6 +196,14 @@ start.setText(start_);
                             myCourseData.setLng(Double.parseDouble(y));
                         }
                     });
+                    Intent intent1 = new Intent(new Intent(context,Matched_driver.class));
+                    intent1.putExtra("start",start_);
+                    intent1.putExtra("end",end_);
+                    intent1.putExtra("token",get_token);
+                    intent1.putExtra("x",x);
+                    intent1.putExtra("y",y);
+
+                    context.startActivity(intent1);
                     dismiss();
 
 

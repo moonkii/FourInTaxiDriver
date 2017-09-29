@@ -87,7 +87,6 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="승객탑승" />
-
-
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
