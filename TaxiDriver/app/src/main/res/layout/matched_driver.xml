@@ -11,6 +11,12 @@
         android:layout_weight="6"
         android:orientation="horizontal">
 
+        <FrameLayout
+            android:id="@+id/first_map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
 
 
     </LinearLayout>
