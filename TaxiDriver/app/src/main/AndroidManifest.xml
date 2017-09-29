@@ -34,6 +34,7 @@
         <activity android:name=".Activity.Register_Activity"/>
         <activity android:name=".Activity.Main_Activity"/>
         <activity android:name=".Activity.Record_Activity"/>
+        <activity android:name=".Activity.Matched_driver"/>
     <activity android:name=".Activity.Act_loding_matching"/>
         <service
             android:name=".MyFirebaseMessagingService">

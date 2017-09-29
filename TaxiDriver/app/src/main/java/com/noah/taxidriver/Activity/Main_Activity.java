@@ -48,6 +48,14 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
         status = (TextView) findViewById(R.id.status);
         btn_record = (Button) findViewById(R.id.main_myinfo);
         client_list = (Button)findViewById(R.id.main_guestlist);
+        Button end = (Button)findViewById(R.id.main_out);
+        end.findViewById(R.id.main_out);
+        end.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         client_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
