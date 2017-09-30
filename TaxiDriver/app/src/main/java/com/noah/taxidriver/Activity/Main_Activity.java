@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +36,7 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
     TextView status;
     TextToSpeech tts;
 
-    Button btn_record;
+    ImageButton btn_record;
     SharedPreferences local;
     SharedPreferences.Editor editor;
     public static boolean isDriving=false;
@@ -49,7 +50,7 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
         editor = local.edit();
         btn_empty= (Button) findViewById(R.id.main_btn_empty);
         btn_driving = (Button) findViewById(R.id.main_btn_driving);
-        btn_record = (Button) findViewById(R.id.main_guestlist);
+        btn_record = (ImageButton) findViewById(R.id.main_guestlist);
 
         Button end = (Button)findViewById(R.id.main_out);
         end.findViewById(R.id.main_out);

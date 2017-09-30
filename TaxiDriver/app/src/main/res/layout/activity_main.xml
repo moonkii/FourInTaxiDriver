@@ -7,24 +7,37 @@
 
 
     <RelativeLayout
-        android:layout_weight="0.5"
+        android:layout_weight="0.4"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
 
-      <Button
+      <ImageButton
           android:id="@+id/main_guestlist"
-          android:text="손님 리스트"
-          android:layout_alignParentBottom="true"
-          android:layout_width="wrap_content"
-          android:layout_height="match_parent" />
+          android:layout_width="30dp"
+          android:layout_height="30dp"
+          android:layout_alignParentStart="true"
+          android:layout_centerVertical="true"
+          android:layout_marginLeft="15dp"
+          android:layout_marginStart="15dp"
+          android:background="#00000000"
+          android:src="@drawable/my_page"
+          android:text="내정보" />
 
-    <Button
-        android:id="@+id/main_out"
-        android:layout_alignParentEnd="true"
-        android:text="퇴근"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/taxi_logomdpi" />
+
+        <Button
+            android:id="@+id/main_out"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:text="퇴근"
+            android:textSize="20dp" />
 
     </RelativeLayout>
 
@@ -46,7 +59,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.1"
         android:weightSum="2">
 
         <Button
