@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">TaxiDriver</string>
+
+    <string name="ko">안녕하세요.</string>
+    <string name="en">헬로우</string>
+    <string name="ja">곤니찌와</string>
+    <string name="ch">닌 하오</string>
+    <string name="fr">봉주흐</string>
+
 </resources>

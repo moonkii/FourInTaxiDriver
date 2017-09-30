@@ -11,12 +11,9 @@
         android:layout_weight="6"
         android:orientation="horizontal">
 
-        <FrameLayout
-            android:id="@+id/first_map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
+        <fragment android:id="@+id/map"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent"            android:name ="com.google.android.gms.maps.MapFragment" />
 
 
     </LinearLayout>
@@ -44,7 +41,7 @@
                 android:text="출발"
                 android:textSize="20sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/where"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -72,7 +69,7 @@
                 android:text="목적지"
                 android:textSize="20sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/destination"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

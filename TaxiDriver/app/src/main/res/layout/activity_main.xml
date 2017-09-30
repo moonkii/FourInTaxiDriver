@@ -11,17 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
-     <Button
-         android:id="@+id/main_myinfo"
-         android:layout_alignParentStart="true"
-         android:text="내정보"
-         android:layout_width="wrap_content"
-         android:layout_height="match_parent" />
 
       <Button
           android:id="@+id/main_guestlist"
           android:text="손님 리스트"
-          android:layout_centerInParent="true"
+          android:layout_alignParentBottom="true"
           android:layout_width="wrap_content"
           android:layout_height="match_parent" />
 
@@ -34,15 +28,19 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/status"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.5"
-        android:background="@android:color/black"
-        android:gravity="center"
-        android:text="상태"
-        android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:background="@android:color/black"
+            android:gravity="center"
+            android:text=""
+            android:textSize="50sp" />
+
+
+
 
     <LinearLayout
         android:orientation="horizontal"
@@ -52,6 +50,7 @@
         android:weightSum="2">
 
         <Button
+            android:textSize="25dp"
             android:background="#f7be16"
             android:layout_weight="1"
             android:textColor="#2d2d2d"
@@ -61,6 +60,8 @@
             android:text="빈차" />
 
         <Button
+            android:textSize="25dp"
+            android:background="#2d2d2d"
             android:layout_weight="1"
             android:id="@+id/main_btn_driving"
             android:layout_width="0dp"

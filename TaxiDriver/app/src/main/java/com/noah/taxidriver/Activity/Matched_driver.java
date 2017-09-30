@@ -19,7 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -33,8 +33,8 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -51,12 +51,17 @@ import java.util.Locale;
  * Created by YH on 2017-09-30.
  */
 
-public class Matched_driver extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener ,LocationListener {
+public class Matched_driver extends AppCompatActivity implements OnMapReadyCallback,
+        GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener
+        ,LocationListener
+//        ,DrawRoute.onDrawRoute
+{
 
     /*#####################################
     *          전역 변수
     * #####################################*/
-    SupportMapFragment mapFragment;
+
     GoogleMap map; //구글맵 참조 변수
     GoogleApiClient mGoogleApiClient;
     Location myLocation; //구글맵 위치 변수
@@ -67,13 +72,15 @@ public class Matched_driver extends AppCompatActivity implements OnMapReadyCallb
     //위도 경도
     double latitude = 0;
     double longitude = 0;
+    boolean isFirst=false;
 
     Button go;
     Handler handler;
-    EditText where,destination;
+    TextView where,destination;
     String token;
     String x;
     String y;
+    int lang;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,16 +88,17 @@ public class Matched_driver extends AppCompatActivity implements OnMapReadyCallb
         handler = new send_message_handler();
         go = (Button)findViewById(R.id.go);
 
-        where = (EditText)findViewById(R.id.where);
-        destination = (EditText)findViewById(R.id.destination);
+        where = (TextView)findViewById(R.id.where);
+        destination = (TextView)findViewById(R.id.destination);
         Intent intent = getIntent();
         String start = intent.getStringExtra("start");
-        String end = intent.getStringExtra("end");
+        final String end = intent.getStringExtra("end");
         token = intent.getStringExtra("token");
         x = intent.getStringExtra("x");
         y = intent.getStringExtra("y");
         where.setText(start);
         destination.setText(end);
+        lang=intent.getIntExtra("lang",0);
 
 
         go.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +110,14 @@ public class Matched_driver extends AppCompatActivity implements OnMapReadyCallb
                 String send = gson.toJson(item_matching);
                 Log.i("뱐ㅇ러ㅏ",send);
                 Network.push(send,Matched_driver.this,handler);
+
+                Intent i = new Intent(Matched_driver.this,Main_Activity.class);
+                i.putExtra("lang",1);
+                i.putExtra("des",end);
+                startActivity(i);
+                Main_Activity.isDriving=true;
+                Matched_driver.this.finish();
+
             }
         });
 
@@ -182,8 +198,23 @@ public class Matched_driver extends AppCompatActivity implements OnMapReadyCallb
 
     @Override
     public void onLocationChanged(Location location) {
+        myLocation = location;
+        latitude = myLocation.getLatitude();
+        longitude = myLocation.getLongitude();
+
+        if(!isFirst){
+            updateMapForCustomer();
+            isFirst=true;
+        }
+
+
 
     }
+
+//    @Override
+//    public void afterDraw(String result) {
+//
+//    }
 
     class send_message_handler extends Handler {//매칭의 모든 것을 Network하나로 하기 때문에,
         //응답후 결과는 모두 핸들 메시지를 사용해야함.
@@ -212,8 +243,8 @@ public class Matched_driver extends AppCompatActivity implements OnMapReadyCallb
         //지명 찾기용
         geocoder = new Geocoder(this, Locale.KOREAN);
 
-        mapFragment = SupportMapFragment.newInstance();
-        mapFragment.getMapAsync(this);
+        MapFragment mapFr = (MapFragment)getFragmentManager() .findFragmentById(R.id.map);
+        mapFr.getMapAsync(Matched_driver.this);
 
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -242,7 +273,10 @@ public class Matched_driver extends AppCompatActivity implements OnMapReadyCallb
                 Log.v("##구글맵 설정", "" + locationSettingsResult.getStatus().toString());
             }
         });
-
+//
+//
+//        DrawRoute.getInstance(this,Matched_driver.this).setFromLatLong(latitude,longitude)
+//                .setToLatLong(Double.parseDouble(x),Double.parseDouble(y)).setGmapAndKey("MapandroidKey",map).run();
 
     }
 

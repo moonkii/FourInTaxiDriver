@@ -43,7 +43,7 @@
             android:value="AIzaSyBY6z21uovEGtPpyWA4J2A-iThFZYNtP-M" />
 
         <activity android:name=".Activity.Matched_driver"/>
-    <activity android:name=".Activity.Act_loding_matching"/>
+
         <service
             android:name=".MyFirebaseMessagingService">
             <intent-filter>

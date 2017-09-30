@@ -6,9 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
@@ -22,7 +22,6 @@ import com.noah.taxidriver.Dialog.Dialog_call;
 import com.noah.taxidriver.MyFirebaseMessagingService;
 import com.noah.taxidriver.R;
 import com.noah.taxidriver.item_matching;
-import com.noah.taxidriver.item_response;
 
 /**
  * Created by YH on 2017-09-12.
@@ -32,40 +31,103 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
 
     Button btn_empty;
     Button btn_driving;
-    Button client_list;
+
     TextView status;
+    TextToSpeech tts;
 
     Button btn_record;
     SharedPreferences local;
     SharedPreferences.Editor editor;
+    public static boolean isDriving=false;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
         local= getSharedPreferences("Driver",MODE_PRIVATE);
         editor = local.edit();
         btn_empty= (Button) findViewById(R.id.main_btn_empty);
         btn_driving = (Button) findViewById(R.id.main_btn_driving);
-        status = (TextView) findViewById(R.id.status);
-        btn_record = (Button) findViewById(R.id.main_myinfo);
-        client_list = (Button)findViewById(R.id.main_guestlist);
+        btn_record = (Button) findViewById(R.id.main_guestlist);
+
         Button end = (Button)findViewById(R.id.main_out);
         end.findViewById(R.id.main_out);
+        status = (TextView) findViewById(R.id.status);
+
+        if(isDriving){
+            Intent intent = getIntent();
+            if(intent!=null){
+                String arrive = intent.getStringExtra("end");
+                final int lang= intent.getIntExtra("lang",0);
+                status.setText(arrive);
+
+                tts = new TextToSpeech(Main_Activity.this, new TextToSpeech.OnInitListener() {
+                    @Override
+                    public void onInit(int status) {
+
+                        switch (lang){
+                            case 0:
+                                tts.speak("어서오세요",TextToSpeech.QUEUE_FLUSH,null);
+                                break;
+
+                            case 1:
+                                tts.speak("wellcome",TextToSpeech.QUEUE_FLUSH,null);
+                                break;
+
+                            case 2:
+                                tts.speak("いらっしゃいませ",TextToSpeech.QUEUE_FLUSH,null);
+                                break;
+
+                            case 3:
+                                tts.speak("欢迎光临",TextToSpeech.QUEUE_FLUSH,null);
+                                break;
+
+                            case 4:
+                                tts.speak("Bienveue",TextToSpeech.QUEUE_FLUSH,null);
+                                break;
+                        }
+
+                    }
+                });
+
+                btn_empty.setBackgroundColor(Color.parseColor("#2d2d2d"));
+                btn_driving.setBackgroundColor(Color.parseColor("#f7be16"));
+                btn_empty.setTextColor(Color.WHITE);
+                btn_driving.setTextColor(Color.parseColor("#2d2d2d"));
+
+            }
+
+        }
+
+
+
+
         end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        client_list.setOnClickListener(new View.OnClickListener() {
+
+
+        btn_driving.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Main_Activity.this,Record_Activity.class));
+                btn_empty.setBackgroundColor(Color.parseColor("#2d2d2d"));
+                btn_driving.setBackgroundColor(Color.parseColor("#f7be16"));
+                btn_empty.setTextColor(Color.WHITE);
+                btn_driving.setTextColor(Color.parseColor("#2d2d2d"));
+
+                status.setText("운행중");
             }
         });
 
         btn_empty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                isDriving=false;
 
                 if(local.getBoolean("driving_status",false)==false){ //없거나 false라면
                     //운행중이아니라는 토스트를 띄워준다.
@@ -76,6 +138,13 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
                     editor.commit();
                 }
 
+
+                btn_driving.setBackgroundColor(Color.parseColor("#2d2d2d"));
+                btn_empty.setBackgroundColor(Color.parseColor("#f7be16"));
+                btn_driving.setTextColor(Color.WHITE);
+                btn_empty.setTextColor(Color.parseColor("#2d2d2d"));
+
+                status.setText("빈차");
 
 
 //                //테스트를 위한코드

@@ -1,7 +1,7 @@
 package com.noah.taxidriver;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.google.firebase.FirebaseApp;
@@ -12,7 +12,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
  * Created by YH on 2017-08-25.
  */
 
-public class login extends AppCompatActivity {
+public class login extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

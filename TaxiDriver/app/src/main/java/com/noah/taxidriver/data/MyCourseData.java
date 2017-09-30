@@ -19,6 +19,15 @@ public class MyCourseData extends RealmObject {
     double lng;
     Date datetime;
     String token;
+    int lang;
+
+    public int getLang() {
+        return lang;
+    }
+
+    public void setLang(int lang) {
+        this.lang = lang;
+    }
 
     public int getSeq() {
         return seq;

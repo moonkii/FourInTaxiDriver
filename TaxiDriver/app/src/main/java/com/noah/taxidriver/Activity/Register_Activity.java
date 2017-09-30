@@ -1,11 +1,11 @@
 package com.noah.taxidriver.Activity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,7 +30,7 @@ import okhttp3.Response;
  * Created by YH on 2017-08-25.
  */
 
-public class Register_Activity extends AppCompatActivity {
+public class Register_Activity extends Activity {
 
     EditText name;
     Button button;

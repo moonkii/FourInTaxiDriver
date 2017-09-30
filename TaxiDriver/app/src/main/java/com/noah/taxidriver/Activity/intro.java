@@ -1,5 +1,6 @@
 package com.noah.taxidriver.Activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,13 +14,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.noah.taxidriver.R;
 
-public class intro extends AppCompatActivity {
+public class intro extends Activity {
 
 
     //퍼미션 변수
