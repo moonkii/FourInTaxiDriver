@@ -43,18 +43,24 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
         local= getSharedPreferences("Driver",MODE_PRIVATE);
         editor = local.edit();
+        status = (TextView) findViewById(R.id.status);
+        if(local.getBoolean("driving_status",false)==false) { //없거나 false라면
+        status.setText("빈차");
+        }else{
+            status.setText("운전중");
+        }
+
+
+
         btn_empty= (Button) findViewById(R.id.main_btn_empty);
         btn_driving = (Button) findViewById(R.id.main_btn_driving);
         btn_record = (ImageButton) findViewById(R.id.main_guestlist);
 
         Button end = (Button)findViewById(R.id.main_out);
         end.findViewById(R.id.main_out);
-        status = (TextView) findViewById(R.id.status);
+
 
         if(isDriving){
             Intent intent = getIntent();

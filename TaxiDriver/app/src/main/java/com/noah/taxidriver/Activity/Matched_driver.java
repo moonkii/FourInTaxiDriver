@@ -226,7 +226,9 @@ public class Matched_driver extends AppCompatActivity implements OnMapReadyCallb
                     Toast.makeText(getApplicationContext(), "서버와의 연결이 원활하지 않습니다.", Toast.LENGTH_SHORT).show();
 
                 case 1 :
-                    startActivity(new Intent(Matched_driver.this,Main_Activity.class));
+                    Intent i = new Intent(Matched_driver.this,Main_Activity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i);
 
 
 
