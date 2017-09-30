@@ -82,7 +82,7 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
                 final int lang= intent.getIntExtra("lang",0);
 
                 status.setText(arrive);
-                Toast.makeText(this, ""+lang, Toast.LENGTH_SHORT).show();
+
                 tts = new TextToSpeech(Main_Activity.this, new TextToSpeech.OnInitListener() {
                     @Override
                     public void onInit(int status) {
