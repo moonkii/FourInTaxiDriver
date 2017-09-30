@@ -101,8 +101,6 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
         }
 
 
-
-
         end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
