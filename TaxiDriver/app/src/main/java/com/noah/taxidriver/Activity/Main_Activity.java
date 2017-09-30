@@ -93,15 +93,15 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
                                 break;
 
                             case 1:
-                                tts.speak("wellcome",TextToSpeech.QUEUE_FLUSH,null);
+                                tts.speak("welcome",TextToSpeech.QUEUE_FLUSH,null);
                                 break;
 
                             case 2:
-                                tts.speak("いらっしゃいませ",TextToSpeech.QUEUE_FLUSH,null);
+                                tts.speak("欢迎光临",TextToSpeech.QUEUE_FLUSH,null);
                                 break;
 
                             case 3:
-                                tts.speak("欢迎光临",TextToSpeech.QUEUE_FLUSH,null);
+                                tts.speak("いらっしゃいませ",TextToSpeech.QUEUE_FLUSH,null);
                                 break;
 
                             case 4:
@@ -198,7 +198,6 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
     private BroadcastReceiver myReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Toast.makeText(context, "왓어", Toast.LENGTH_SHORT).show();
 
 
 //승객의 요청이 fcm을 통해 온다면 브로스캐스트로 밑의 코드를 실행한다.
@@ -213,7 +212,7 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
 
               Call_driver_dialog dialog = new Call_driver_dialog(Main_Activity.this,item_response.getStart_address(),item_response.getDestination(),item_response.getX(),
                       item_response.getY(), item_response.getToken(),Main_Activity.this,item_response.getName(),item_response.getLang());
-
+                    Log.i("언어값 : ",item_response.getLang());
                 dialog.show();
 
             }

@@ -112,7 +112,7 @@ public class Matched_driver extends AppCompatActivity implements OnMapReadyCallb
                 Network.push(send,Matched_driver.this,handler);
                 Main_Activity.isDriving=true;
                 Intent i = new Intent(Matched_driver.this,Main_Activity.class);
-                i.putExtra("lang",1);
+                i.putExtra("lang",lang);
                 i.putExtra("des",end);
                 Log.i("뭐냐",end);
                 startActivity(i);

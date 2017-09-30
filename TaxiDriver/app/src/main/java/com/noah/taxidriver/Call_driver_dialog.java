@@ -195,7 +195,8 @@ public class Call_driver_dialog extends Dialog {
                     intent1.putExtra("token", get_token);
                     intent1.putExtra("x", x);
                     intent1.putExtra("y", y);
-                    intent1.putExtra("lang", lang);
+                    intent1.putExtra("lang",Integer.parseInt(lang) );
+                    Log.i("언어값2 : ",lang);
 
                     context.startActivity(intent1);
                     main_activity.finish();
