@@ -166,9 +166,9 @@ public class Call_driver_dialog extends Dialog {
                     editor.putBoolean("driving_status", true);
                     editor.commit();
                     //            main_activity.getBtn_empty().setBackgroundColor();
-                    Intent intent = new Intent(getContext(), Main_Activity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    getContext().startActivity(intent);
+//                    Intent intent = new Intent(getContext(), Main_Activity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    getContext().startActivity(intent);
 
                     realm.executeTransaction(new Realm.Transaction() {
                         @Override
@@ -198,6 +198,7 @@ public class Call_driver_dialog extends Dialog {
                     intent1.putExtra("lang", lang);
 
                     context.startActivity(intent1);
+                    main_activity.finish();
                     dismiss();
 
 

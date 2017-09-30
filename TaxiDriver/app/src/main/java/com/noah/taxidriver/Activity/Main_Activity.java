@@ -43,32 +43,46 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        local= getSharedPreferences("Driver",MODE_PRIVATE);
-        editor = local.edit();
-        status = (TextView) findViewById(R.id.status);
-        if(local.getBoolean("driving_status",false)==false) { //없거나 false라면
-        status.setText("빈차");
-        }else{
-            status.setText("운전중");
-        }
-
-
-
         btn_empty= (Button) findViewById(R.id.main_btn_empty);
         btn_driving = (Button) findViewById(R.id.main_btn_driving);
         btn_record = (ImageButton) findViewById(R.id.main_guestlist);
 
         Button end = (Button)findViewById(R.id.main_out);
         end.findViewById(R.id.main_out);
+        local= getSharedPreferences("Driver",MODE_PRIVATE);
+        //무조건 빈차로 해버린다.
+        editor = local.edit();
+        editor.putBoolean("driving_status",false);
+        editor.commit();
+        status = (TextView) findViewById(R.id.status);
+        if(local.getBoolean("driving_status",false)==false) { //없거나 false라면
+        status.setText("빈차");
+            btn_driving.setBackgroundColor(Color.parseColor("#2d2d2d"));
+            btn_empty.setBackgroundColor(Color.parseColor("#f7be16"));
+            btn_driving.setTextColor(Color.WHITE);
+            btn_empty.setTextColor(Color.parseColor("#2d2d2d"));
+        }else{
+            status.setText("운전중");
+            btn_empty.setBackgroundColor(Color.parseColor("#2d2d2d"));
+            btn_driving.setBackgroundColor(Color.parseColor("#f7be16"));
+            btn_empty.setTextColor(Color.WHITE);
+            btn_driving.setTextColor(Color.parseColor("#2d2d2d"));
+        }
+
+
+
+
 
 
         if(isDriving){
             Intent intent = getIntent();
             if(intent!=null){
-                String arrive = intent.getStringExtra("end");
-                final int lang= intent.getIntExtra("lang",0);
-                status.setText(arrive);
+                String arrive = intent.getStringExtra("des");
 
+                final int lang= intent.getIntExtra("lang",0);
+
+                status.setText(arrive);
+                Toast.makeText(this, ""+lang, Toast.LENGTH_SHORT).show();
                 tts = new TextToSpeech(Main_Activity.this, new TextToSpeech.OnInitListener() {
                     @Override
                     public void onInit(int status) {
@@ -123,7 +137,8 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
                 btn_driving.setBackgroundColor(Color.parseColor("#f7be16"));
                 btn_empty.setTextColor(Color.WHITE);
                 btn_driving.setTextColor(Color.parseColor("#2d2d2d"));
-
+                editor.putBoolean("driving_status",true);
+                editor.commit();
                 status.setText("운행중");
             }
         });
@@ -198,8 +213,7 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
 
               Call_driver_dialog dialog = new Call_driver_dialog(Main_Activity.this,item_response.getStart_address(),item_response.getDestination(),item_response.getX(),
                       item_response.getY(), item_response.getToken(),Main_Activity.this,item_response.getName(),item_response.getLang());
-                Log.i("쌰얐ㅇ바","ㄴㅇㄹ");
-                Log.i("쌰얐ㅇ바","ㄴㅇㄹ"+item_response.getToken());
+
                 dialog.show();
 
             }
@@ -212,6 +226,10 @@ public class Main_Activity extends Activity implements Dialog_call.CallOkClickLi
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(myReceiver);
+        if(tts!=null) {
+            tts.stop();
+            tts.shutdown();
+        }
     }
 
     //승객 요청 수락했을 때 처리

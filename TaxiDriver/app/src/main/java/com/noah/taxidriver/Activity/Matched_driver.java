@@ -110,14 +110,14 @@ public class Matched_driver extends AppCompatActivity implements OnMapReadyCallb
                 String send = gson.toJson(item_matching);
                 Log.i("뱐ㅇ러ㅏ",send);
                 Network.push(send,Matched_driver.this,handler);
-
+                Main_Activity.isDriving=true;
                 Intent i = new Intent(Matched_driver.this,Main_Activity.class);
                 i.putExtra("lang",1);
                 i.putExtra("des",end);
+                Log.i("뭐냐",end);
                 startActivity(i);
-                Main_Activity.isDriving=true;
-                Matched_driver.this.finish();
-
+//                Matched_driver.this.finish();
+                Log.i("제발","제발");
             }
         });
 
@@ -226,9 +226,9 @@ public class Matched_driver extends AppCompatActivity implements OnMapReadyCallb
                     Toast.makeText(getApplicationContext(), "서버와의 연결이 원활하지 않습니다.", Toast.LENGTH_SHORT).show();
 
                 case 1 :
-                    Intent i = new Intent(Matched_driver.this,Main_Activity.class);
-                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(i);
+//                    Intent i = new Intent(Matched_driver.this,Main_Activity.class);
+//                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    startActivity(i);
 
 
 

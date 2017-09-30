@@ -26,12 +26,12 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         //고객의 콜요청이 왓을경우.
-        Log.i("왜그래 ?","하");
+
             Log.i("ㅋㅋ",remoteMessage.getData().get("message"));
         try {
             JSONObject jsonObject = new JSONObject(remoteMessage.getData().get("message"));
             if(jsonObject.get("flag").equals("call_driver")) {
-                Log.i("썅","왜");
+
                 Intent intent = new Intent(CALL_DRIVER);
                 intent.putExtra("msg",remoteMessage.getData().get("message"));
 
