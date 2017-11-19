@@ -1,5 +1,6 @@
 package com.noah.taxidriver.Activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -24,6 +25,11 @@ public class intro extends Activity {
 
     //퍼미션 변수
     final int permissionRequestCodeForMap = 1000;
+    final int permissionRequestCodeForStorage = 1001;
+    final int permissionRequestCodeForCamera = 1002;
+
+
+
     Gson gson;
     boolean isGPSOn=false;
 
@@ -50,6 +56,13 @@ public class intro extends Activity {
             if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 //위치정보 권한
                 ActivityCompat.requestPermissions(intro.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, permissionRequestCodeForMap);
+
+            }else if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(intro.this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, permissionRequestCodeForStorage);
+
+            }else if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(intro.this, new String[]{Manifest.permission.CAMERA}, permissionRequestCodeForCamera);
+
 
             } else {
                 //권한 모두 획득시
@@ -96,6 +109,31 @@ public class intro extends Activity {
 
                 break;
 
+            case permissionRequestCodeForStorage :
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //폰 상태권한 허용
+                    checkPermissions();
+
+                } else {
+                    //폰상태 권한 거절시
+                    finish();
+                    Toast.makeText(this, "권한을 허용하셔야 서비스 이용이 가능합니다.", Toast.LENGTH_SHORT).show();
+                }
+
+                break;
+
+            case permissionRequestCodeForCamera :
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //폰 상태권한 허용
+                    checkPermissions();
+
+                } else {
+                    //폰상태 권한 거절시
+                    finish();
+                    Toast.makeText(this, "권한을 허용하셔야 서비스 이용이 가능합니다.", Toast.LENGTH_SHORT).show();
+                }
+
+                break;
         }
 
     }

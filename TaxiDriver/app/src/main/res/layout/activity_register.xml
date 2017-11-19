@@ -11,10 +11,24 @@
         android:id="@+id/z"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
+        android:layout_weight="3"
         android:gravity="center"
         android:text="Four in Taxi 기사 회원가입"
         android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/licenImg"
+        android:src="@drawable/camera_plus_un_f"
+        android:layout_weight="2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp" />
+
+    <TextView
+        android:gravity="center_horizontal"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="차랑에 비치된 택시운전자격증을 촬영해 주세요."/>
 
 
 
@@ -67,5 +81,5 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="회원가입" />
+        android:text="등록신청하기" />
 </LinearLayout>

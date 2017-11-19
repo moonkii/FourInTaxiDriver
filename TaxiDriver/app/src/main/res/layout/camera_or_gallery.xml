@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:id="@+id/camera"
+        android:text="카메라로 촬영"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@android:drawable/list_selector_background"
+        android:clickable="true"
+        android:focusable="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:id="@+id/gallery"
+        android:text="앨범에서 선택"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@android:drawable/list_selector_background"
+        android:clickable="true"
+        android:focusable="true"/>
+
+</LinearLayout>
