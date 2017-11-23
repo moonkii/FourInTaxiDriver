@@ -15,9 +15,11 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
 import com.noah.taxidriver.Activity.Main_Activity;
@@ -76,6 +78,8 @@ public class Call_driver_dialog extends Dialog {
     Button ok;//5
     Button no;//6
     Realm realm;
+    ImageView logo;
+    TextView lang_tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +91,25 @@ public class Call_driver_dialog extends Dialog {
         start = (TextView) findViewById(R.id.textView);
         ok = (Button) findViewById(R.id.button5);
         no = (Button) findViewById(R.id.button6);
+        logo = (ImageView)findViewById(R.id.imageView);
+        lang_tv = (TextView)findViewById(R.id.textView9);
+        switch (Integer.parseInt(lang)){
+            case 0 :
+                lang_tv.setText("한국어");
+                break;
+            case 1:
+                lang_tv.setText("영어");
+                break;
+            case 2:
+                lang_tv.setText("중국어");
+                break;
+            case 3:
+                lang_tv.setText("일본어");
+                break;
+            case 4:
+                lang_tv.setText("프랑스어");
+                break;
+        }
         start.setText(start_);
         end.setText(end_);
         local = getContext().getSharedPreferences("Driver", MODE_PRIVATE);
@@ -96,7 +119,7 @@ public class Call_driver_dialog extends Dialog {
         my_token = FirebaseInstanceId.getInstance().getToken();
 
 
-
+        Glide.with(context).load(R.drawable.taxi_logomdpi).override(250,250).into(logo);
 //        userLocation = getMyLocation();
 //        Log.i("ss",userLocation.getLatitude()+"");
         ok.setOnClickListener(new View.OnClickListener() {
