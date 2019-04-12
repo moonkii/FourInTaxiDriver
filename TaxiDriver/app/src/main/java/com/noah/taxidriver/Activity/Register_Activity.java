@@ -157,7 +157,7 @@ public class Register_Activity extends AppCompatActivity {
 
                 //request
                 Request request = new Request.Builder()
-                        .url("http://teampinky.vps.phps.kr/API/register_driver.php")
+                        .url("") 
                         .post(body)
                         .build();
 
