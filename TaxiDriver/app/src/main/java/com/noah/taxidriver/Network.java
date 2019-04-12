@@ -63,7 +63,7 @@ public class Network {
 
                 //request
                 Request request = new Request.Builder()
-                        .url("http://teampinky.vps.phps.kr/API/call_driver.php")
+                        .url("")
                         .post(body)
                         .build();
 
