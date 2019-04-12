@@ -56,7 +56,7 @@ String x;
         //request
         Request request = new Request.Builder()
 
-                .url("http://teampinky.vps.phps.kr/API/register.php")
+                .url("")
                 .post(body)
                 .build();
 
